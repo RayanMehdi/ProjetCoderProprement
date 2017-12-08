@@ -1,9 +1,10 @@
 package fr.groupetroj.iem.projectcoderproprement.data.model;
 
-//import com.google.gson.annotations.SerializedName;
+import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
 /**
  * Created by iem on 17/11/2017.
  */
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 public class Comics implements Serializable{
     private final int id, issueNumber, pageCount;
     private final String title, description, diamondCode, date;
-    //@SerializedName("image")
+    @SerializedName("image")
     private final String imageUrl;
     private final double price;
     private final ArrayList<ComicsCreators> creators;

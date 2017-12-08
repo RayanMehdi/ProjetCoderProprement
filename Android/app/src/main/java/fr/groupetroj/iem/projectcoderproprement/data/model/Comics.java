@@ -3,7 +3,11 @@ package fr.groupetroj.iem.projectcoderproprement.data.model;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by iem on 17/11/2017.
@@ -11,7 +15,8 @@ import java.util.ArrayList;
 
 public class Comics implements Serializable{
     private final int id, issueNumber, pageCount;
-    private final String title, description, diamondCode, date;
+    private final String title, description, diamondCode;
+    private String date;
     @SerializedName("image")
     private final String imageUrl;
     private final double price;
@@ -24,7 +29,7 @@ public class Comics implements Serializable{
         title = "";
         description = "";
         diamondCode = "";
-        date = "2017-10-25T00:00:00-0400";
+        date=formatDate("2017-10-25T00:00:00-0400");
         imageUrl = "";
         price = 0.00;
         creators= new ArrayList<ComicsCreators>();
@@ -40,6 +45,7 @@ public class Comics implements Serializable{
         this.description = description;
         this.diamondCode = diamondCode;
         this.date = date;
+        this.date=formatDate(date);
         this.imageUrl = imageUrl;
         this.price = price;
         this.creators = creators;
@@ -79,6 +85,20 @@ public class Comics implements Serializable{
 
     public double getPrice() {
         return price;
+    }
+
+    private String formatDate(String date){
+        try {
+            Date oldDate = null;
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.US);
+            oldDate = format.parse(date);
+            format= new SimpleDateFormat("dd/MM/yyyy");
+            return format.format(oldDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return "01/01/2011";
+        }
+
     }
 
     public ArrayList<ComicsCreators> getCreators() {

@@ -1,4 +1,4 @@
-package fr.groupetroj.iem.sharebutton.data.model;
+package fr.groupetroj.iem.projectcoderproprement.data.model;
 
 import com.google.gson.annotations.SerializedName;
 

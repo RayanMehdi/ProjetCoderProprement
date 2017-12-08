@@ -1,6 +1,9 @@
-package fr.groupetroj.iem.sharebutton.data.manager;
+package fr.groupetroj.iem.projectcoderproprement.data.manager;
 
-import fr.groupetroj.iem.sharebutton.data.model;
+import java.util.ArrayList;
+
+import fr.groupetroj.iem.projectcoderproprement.data.model.Comics;
+import fr.groupetroj.iem.projectcoderproprement.data.model.ComicsCreator;
 
 /**
  * Created by iem on 08/12/2017.

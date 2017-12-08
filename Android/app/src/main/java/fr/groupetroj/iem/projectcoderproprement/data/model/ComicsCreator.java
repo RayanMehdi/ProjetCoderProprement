@@ -1,4 +1,4 @@
-package fr.groupetroj.iem.sharebutton.data.model;
+package fr.groupetroj.iem.projectcoderproprement.data.model;
 
 /**
  * Created by iem on 17/11/2017.

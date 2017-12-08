@@ -2,7 +2,7 @@
 set -x
 
 #REQUIRED
-apk_origin_path=app/build/outputs/apk/debug/app-debug.apk
+apk_origin_path=Android/app/build/outputs/apk/debug/app-debug.apk
 apk_name=Comics
 apk_extension=.apk
 apk_folder=build/apk/

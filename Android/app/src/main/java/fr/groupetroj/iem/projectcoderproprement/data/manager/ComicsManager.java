@@ -3,7 +3,7 @@ package fr.groupetroj.iem.projectcoderproprement.data.manager;
 import java.util.ArrayList;
 
 import fr.groupetroj.iem.projectcoderproprement.data.model.Comics;
-import fr.groupetroj.iem.projectcoderproprement.data.model.ComicsCreator;
+import fr.groupetroj.iem.projectcoderproprement.data.model.ComicsCreators;
 
 /**
  * Created by iem on 08/12/2017.
@@ -53,7 +53,7 @@ public class ComicsManager {
         return comics.getPrice();
     }
 
-    public ArrayList<ComicsCreator> getComicsCreators() {
+    public ArrayList<ComicsCreators> getComicsCreators() {
         return comics.getCreators();
     }
 }

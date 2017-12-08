@@ -15,7 +15,7 @@ public class Comics implements Serializable{
     @SerializedName("image")
     private final String imageUrl;
     private final double price;
-    private final ArrayList<ComicsCreator> creators;
+    private final ArrayList<ComicsCreators> creators;
 
     public Comics() {
         id = 0;
@@ -27,12 +27,12 @@ public class Comics implements Serializable{
         date = "2017-10-25T00:00:00-0400";
         imageUrl = "";
         price = 0.00;
-        creators= new ArrayList<ComicsCreator>();
-        creators.add(new ComicsCreator("James Smith", "writer"));
+        creators= new ArrayList<ComicsCreators>();
+        creators.add(new ComicsCreators("James Smith", "writer"));
 
     }
 
-    public Comics(int id, int issueNumber, int pageCount, String title, String description, String diamondCode, String date, String imageUrl, double price, ArrayList<ComicsCreator> creators) {
+    public Comics(int id, int issueNumber, int pageCount, String title, String description, String diamondCode, String date, String imageUrl, double price, ArrayList<ComicsCreators> creators) {
         this.id = id;
         this.issueNumber = issueNumber;
         this.pageCount = pageCount;
@@ -81,7 +81,7 @@ public class Comics implements Serializable{
         return price;
     }
 
-    public ArrayList<ComicsCreator> getCreators() {
+    public ArrayList<ComicsCreators> getCreators() {
         return creators;
     }
 }

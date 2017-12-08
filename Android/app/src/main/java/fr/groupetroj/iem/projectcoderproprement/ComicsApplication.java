@@ -1,6 +1,9 @@
-package fr.groupetroj.iem.sharebutton;
+package fr.groupetroj.iem.projectcoderproprement;
 
 import android.app.Application;
+
+import fr.groupetroj.iem.projectcoderproprement.data.manager.ComicsCreatorsManager;
+import fr.groupetroj.iem.projectcoderproprement.data.manager.ComicsManager;
 
 /**
  * Created by iem on 08/12/2017.
@@ -18,14 +21,14 @@ public class ComicsApplication extends Application{
 
     // Variable privée qui retiendra la seule instance du manager
     private ComicsManager comicsManager;
-    private ComicsCreatorManager comicsCreatorManager;
+    private ComicsCreatorsManager comicsCreatorManager;
 
     // getter public pour récupérer l'instance unique de l'objet manager
     public ComicsManager getComicsManager() {
         return comicsManager;
     }
 
-    public ComicsCreatorManager getComicsCreatorManager() {
+    public ComicsCreatorsManager getComicsCreatorManager() {
         return comicsCreatorManager;
     }
 
@@ -35,7 +38,7 @@ public class ComicsApplication extends Application{
         application = this;
 
         this.comicsManager = new ComicsManager();
-        this.comicsCreatorManager = new ComicsCreatorManager();
+        this.comicsCreatorManager = new ComicsCreatorsManager();
     }
 
 }

@@ -1,4 +1,4 @@
-package fr.groupetroj.iem.sharebutton;
+package fr.groupetroj.iem.projectcoderproprement;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

@@ -1,12 +1,16 @@
 package fr.groupetroj.iem.projectcoderproprement.data.model;
 
 import android.os.AsyncTask;
+import android.util.JsonReader;
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
@@ -25,10 +29,18 @@ public class AsyncTaskFileParsing extends AsyncTask<Object, Void, String>{
     private MyAdapter adapter;
     @Override
     protected String doInBackground(Object... params) {
+        listComics = new ArrayList<Comics>();
         listComics = (ArrayList<Comics>) params[0];
+        Log.d("POST", (String) params[2]);
         String jsonRaw = this.jsonExtract((String) params[2]);
+        Log.d("POST", jsonRaw);
+        adapter = (MyAdapter) params[1];
+        try {
+            listComics.addAll(this.Gonsreturn(jsonRaw));
+        }catch (NullPointerException e){
+            Log.d("POST","Le fichier n'existe pas ou n'est pas conforme");
+        }
 
-        array.addAll(this.Gonsreturn(jsonRaw));
 
 
         return "OK";
@@ -39,8 +51,8 @@ public class AsyncTaskFileParsing extends AsyncTask<Object, Void, String>{
     public ArrayList<Comics> Gonsreturn(String json)
     {
 
-        Type collectionType = new TypeToken<Collection<Pokemon>>(){}.getType();
-        return  (ArrayList<Pokemon>) new Gson().fromJson(json, collectionType);
+        Type collectionType = new TypeToken<Collection<Comics>>(){}.getType();
+        return  (ArrayList<Comics>) new Gson().fromJson(json, collectionType);
 
     }
 
@@ -51,29 +63,25 @@ public class AsyncTaskFileParsing extends AsyncTask<Object, Void, String>{
 
     }
 
-    public String jsonExtract(String URL){
-        java.net.URL url = null;
-        HttpURLConnection urlConnection = null;
-        BufferedReader in = null;
+    public String jsonExtract(String filename){
         String textReturn = "";
         try {
-            url = new URL(URL.toString());
-            urlConnection = (HttpURLConnection) url.openConnection();
-            if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                in = new BufferedReader(
-                        new InputStreamReader(urlConnection.getInputStream(), "UTF-8"));
-                String temp = "";
-                while ((temp = in.readLine()) != null) {
+            String temp;
+            BufferedReader reader = new BufferedReader(new FileReader(new File(filename)));
+                while ((temp = reader.readLine()) != null) {
                     textReturn += temp;
                 }
                 Log.d("POST",textReturn);
-            }
+
+
+
         } catch (MalformedURLException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e)
 
+    {
+        e.printStackTrace();
+    }
         return textReturn;
     }
 }

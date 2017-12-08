@@ -1,22 +1,21 @@
 package fr.groupetroj.iem.projectcoderproprement.ui.activity;
 
 import android.content.Context;
+import android.support.constraint.ConstraintLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-
-//import com.example.iem.pokecards.Modele.Pokemon;
 import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
+
+import fr.groupetroj.iem.projectcoderproprement.data.model.Comics;
+import fr.groupetroj.iem.projectcoderproprement.R;
 
 /**
  * Created by iem on 08/12/2017.
@@ -24,11 +23,11 @@ import java.util.ArrayList;
 
 public class ListComicsAdapter extends BaseAdapter {
 
-    ArrayList<Pokemon> listItem= new ArrayList<Pokemon>();
+    ArrayList<Comics> listItem= new ArrayList<Comics>();
     Context context;
-    LinearLayout layoutItem;
+    ConstraintLayout constraintLayout;
 
-    public MyAdapter(ArrayList<Pokemon> listItem, Context context) {
+    public ListComicsAdapter(ArrayList<Comics> listItem, Context context) {
         this.listItem = listItem;
         this.context = context;
     }
@@ -55,32 +54,33 @@ public class ListComicsAdapter extends BaseAdapter {
         //(1) : Réutilisation des layouts
         LayoutInflater mInflater = LayoutInflater.from(context);
         if (convertView == null) {
-            //Initialisation de notre item à partir du  layout XML "personne_layout.xml"
-            layoutItem = (LinearLayout) mInflater.inflate(R.layout.listelements, parent, false);
+            //Initialisation de notre item à partir du  layout XML "activity_list_comics_item.xml"
+            constraintLayout = (ConstraintLayout) mInflater.inflate(R.layout.activity_list_comics_item, parent, false);
         } else {
-            layoutItem = (LinearLayout) convertView;
+            constraintLayout = (ConstraintLayout) convertView;
         }
 
         //(2) : Récupération des TextView de notre layout
-        TextView tv_pokemon_id_name = (TextView) layoutItem.findViewById(R.id.pokemon_id_name);
-        ImageView icone = (ImageView) layoutItem.findViewById(R.id.img);
+        TextView textView_title = (TextView) constraintLayout.findViewById(R.id.activity_list_comics_item_title_textView);
+        TextView textView_date = (TextView) constraintLayout.findViewById(R.id.activity_list_comics_item_date_textView);
+        TextView textView_pageCount = (TextView) constraintLayout.findViewById(R.id.activity_list_comics_item_page_count_textView);
+        ImageView imageView = (ImageView) constraintLayout.findViewById(R.id.activity_list_comics_item_image);
 
 
         //(3) : mise à jour des widgets des elements de l'item
 
-        tv_pokemon_id_name.setText(listItem.get(position).getId()+" "+listItem.get(position).getName());
-        Picasso.with(context).load(listItem.get(position).getImage()).into(icone);
+        textView_title.setText(listItem.get(position).getTitle());
+        textView_date.setText(listItem.get(position).getDate());
+        textView_pageCount.setText(Integer.toString(listItem.get(position).getPageCount()));
 
-
-        //(4) Changement de la couleur du fond de notre item
-
-
+        //Picasso.with(context).load(listItem.get(position).getImageUrl()).into(imageView);
+        Picasso.with(context).load("http://i.annihil.us/u/prod/marvel/i/mg/f/03/59e7b08528560.jpg").into(imageView);
         //On retourne l'item créé.
-        return layoutItem;
+        return constraintLayout;
     }
 
     public ImageView getImg(){
-        return (ImageView) layoutItem.findViewById(R.id.img);
+        return (ImageView) constraintLayout.findViewById(R.id.activity_list_comics_item_image);
     }
 
 

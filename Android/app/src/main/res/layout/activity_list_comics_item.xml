@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="88dp">
+    android:layout_height="120dp">
 
     <ImageView
         android:id="@+id/activity_list_comics_item_image"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="74dp"
+        android:layout_height="104dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="#AAA"
+        android:layout_marginTop="8dp"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="16dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/activity_list_comics_item_title_textView"
@@ -47,12 +45,15 @@
         android:layout_alignStart="@+id/activity_list_comics_item_title_textView"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         android:text="date"
         android:textColor="#616161"
         android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/activity_list_comics_item_page_count_textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/activity_list_comics_item_image"
-        tools:layout_editor_absoluteY="38dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/activity_list_comics_item_page_count_textView"
@@ -63,10 +64,12 @@
         android:layout_alignStart="@+id/activity_list_comics_item_title_textView"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
         android:text="page"
         android:textColor="#616161"
         android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/activity_list_comics_item_image"
-        tools:layout_editor_absoluteY="57dp" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_list_comics_item_date_textView" />
 </android.support.constraint.ConstraintLayout>

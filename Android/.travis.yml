@@ -12,4 +12,17 @@ script:
 - "./gradlew testDebugUnitTest"
 - "./build-apk.sh"
 notifications:
-    slack: lp-iem:kDPhwslAWdRY6xk89yHqyL9i
+  slack: lp-iem:kDPhwslAWdRY6xk89yHqyL9i
+branches:
+  only:
+  - master
+  - develop
+deploy:
+  provider: releases
+  api_key:
+    secure: JMi/Z6e45OEJyBf3udOaJgbT1CUxZ84J3rqMOJtcD5zVerRJvyXOcOfAczdas2HX1HgV4GkWV6etOiWDFPwqr4QT18/1yMkJsqE8c4zdAbI6Vxk48DQSgWCLstphT429Igkksywf3ef/5o1u/T3IUqowebTM41DPu0t7/TlgdOwFQ8jRBDVIUeSZCBUyoEOVKwwFVD6nLP1JlTgTYl2tVBrgA0KvCovpyqOxjT+PAXLmhqM53vtCznxJfPuIugRBm6Ak4LkhbeQaVvLAzbonE80MhhAXBEwGt+Iyjz6ThJJv80HUGIztNQYuY6Hd3vqrmsbh4p82xI6Jzb5AVCzoT8EgX6CxGkp4w72YxepauSeHd/+HjGqjvVV+D/k9nJCdH6LL32mTqfCK1OMqVjyQTHbDai9kxBBradHB7PcyOP6PaFYs96gYKkFBPDmclNOSIWd95nEN4xw5WNIbnvHl/BsA6Ok3Ce6Yu5czbXD+xpRML4JesvlGTBkroVLdB8lApBd5ZVvhypw0QCYZtIDL6gitQdvY4misJCJFYsYsGNidV+uSNP7wMoEZ/9S81RcMuTvAuAVpidqW2HuuKtevQxiC8qIpKVw20sEROPASfCN7JM8lQVuGcHo+L2BtB5kJJtjeD2dCCAyLcZkriEq5wtR/+7RTJ5QCaukMjv0WCaE=
+    file: "./build/apk/Comics.apk"
+    file_glob: true
+    skip_cleanup: true
+  on:
+    repo: RayanMehdi/ProjetCoderProprement

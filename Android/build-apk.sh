@@ -8,9 +8,7 @@ apk_extension=.apk
 apk_folder=build/apk/
 
 #LET'S SCRIPT
-#GET FINAL APK_PATH
-date=$(date '+%d%m%Y%H%M%S');
-apk_final_path=$apk_folder$apk_name-$date$apk_extension
+apk_final_path=$apk_folder$apk_name$apk_extension
 
 #BUILD APK
 chmod +x gradlew

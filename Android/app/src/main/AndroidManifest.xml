@@ -15,11 +15,11 @@
             android:label="@string/comics_details_page_name"/>
         <activity android:name=".ui.activity.ListComicsActivity"
             android:label="@string/comics_list_page_name">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

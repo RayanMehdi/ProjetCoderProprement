@@ -34,7 +34,7 @@ public class ListComicsActivity extends AppCompatActivity {
 
         // TODO
 
-            new AsyncTaskFileParsing().execute(listComics, listComicsAdapter, R.raw.sample_ok, this);
+            new AsyncTaskFileParsing().execute(listComics, listComicsAdapter, R.raw.sample_ko, this);
 
 
         //Enfin on met un écouteur d'évènement sur notre listView

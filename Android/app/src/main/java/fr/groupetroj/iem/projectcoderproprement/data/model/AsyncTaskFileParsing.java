@@ -6,6 +6,7 @@ import fr.groupetroj.iem.projectcoderproprement.ui.activity.ListComicsAdapter;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.util.MalformedJsonException;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -57,21 +58,21 @@ public class AsyncTaskFileParsing extends AsyncTask<Object, Void, String>{
 
     public ArrayList<Comics> Gonsreturn(String json)
     {
-        Gson gson = new GsonBuilder().create();
-        Code_HTTP code_HTTP = gson.fromJson(json, Code_HTTP.class);
+        try {
+            Gson gson = new GsonBuilder().create();
+            Code_HTTP code_HTTP = gson.fromJson(json, Code_HTTP.class);
 
-        if (code_HTTP.isSuccess()) {
-            Type listType = new TypeToken<ArrayList<Comics>>(){}.getType();
+            Type listType = new TypeToken<ArrayList<Comics>>() {}.getType();
             JsonParser p = new JsonParser();
-            JsonElement jsonContainer  = p.parse(json);
+            JsonElement jsonContainer = p.parse(json);
             JsonElement jsonQuery = ((JsonObject) jsonContainer).get("results");
             listComics = gson.fromJson(jsonQuery, listType);
             return listComics;
-        }
-        else {
+
+        }catch (Exception e){
             Log.d("Error", "Code invalide");
-            return new ArrayList<Comics>();
         }
+        return new ArrayList<Comics>();
     }
 
     @Override

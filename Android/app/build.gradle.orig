@@ -25,6 +25,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+<<<<<<< HEAD
     compile 'com.squareup.picasso:picasso:2.5.2'
+=======
     compile 'com.google.code.gson:gson:2.7'
+>>>>>>> 08a523f3e9bb55f6a3b5699536af296710c7b54c
 }

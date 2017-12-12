@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ProjectCoderProprement</string>
+    <string name="comics_details_page_name"></string>
+    <string name="comics_list_page_name">Comics</string>
 </resources>

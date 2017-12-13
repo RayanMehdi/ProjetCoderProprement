@@ -9,8 +9,8 @@ android:
   - extra-google-m2repository
   - extra-android-m2repository
 script:
-- "./gradlew testDebugUnitTest"
-- "./build-apk.sh"
+- "./Android/gradlew testDebugUnitTest"
+- "./Android/build-apk.sh"
 notifications:
   slack: lp-iem:kDPhwslAWdRY6xk89yHqyL9i
 branches:
@@ -20,9 +20,10 @@ branches:
 deploy:
   provider: releases
   api_key:
-    secure: JMi/Z6e45OEJyBf3udOaJgbT1CUxZ84J3rqMOJtcD5zVerRJvyXOcOfAczdas2HX1HgV4GkWV6etOiWDFPwqr4QT18/1yMkJsqE8c4zdAbI6Vxk48DQSgWCLstphT429Igkksywf3ef/5o1u/T3IUqowebTM41DPu0t7/TlgdOwFQ8jRBDVIUeSZCBUyoEOVKwwFVD6nLP1JlTgTYl2tVBrgA0KvCovpyqOxjT+PAXLmhqM53vtCznxJfPuIugRBm6Ak4LkhbeQaVvLAzbonE80MhhAXBEwGt+Iyjz6ThJJv80HUGIztNQYuY6Hd3vqrmsbh4p82xI6Jzb5AVCzoT8EgX6CxGkp4w72YxepauSeHd/+HjGqjvVV+D/k9nJCdH6LL32mTqfCK1OMqVjyQTHbDai9kxBBradHB7PcyOP6PaFYs96gYKkFBPDmclNOSIWd95nEN4xw5WNIbnvHl/BsA6Ok3Ce6Yu5czbXD+xpRML4JesvlGTBkroVLdB8lApBd5ZVvhypw0QCYZtIDL6gitQdvY4misJCJFYsYsGNidV+uSNP7wMoEZ/9S81RcMuTvAuAVpidqW2HuuKtevQxiC8qIpKVw20sEROPASfCN7JM8lQVuGcHo+L2BtB5kJJtjeD2dCCAyLcZkriEq5wtR/+7RTJ5QCaukMjv0WCaE=
-    file: "./build/apk/Comics.apk"
-    file_glob: true
-    skip_cleanup: true
+    secure: RMsaOZrcrx9dpwgt9P1oqHC0L9yGhHElH6E1hZbFyyOUz064FUL8/r6JISm+BADMlWeo0pGFC5IPg7HajMInqAJWNsYNtV1irHk79M6IllNeDaLMxoPErROzu+NLEwzu9hzdkZXn521YCoM/3J2elqh19QF1TygRRfgOEKCGD+jngC49sw30kVEVbV23vmEXWCnwlJxDfGXLuTCd/+D4yAM2K0OsgbBtSk7n6v+X1cSkebNv8QuOTySEYs4Ymzs4TaXJSec5TM1hNgG5OByOfGy6aSmAOdjXWLXeo7bpAvt4TmjjJaLxTxloO09ujH/tmEBr6156KSwoQ4uvtDOXcnNrhsvlLt5vkXka+Jlrp32g+xqLjczTyZb/NNxiM6k520kv3uh/WseXNLOvDSOyhjP7LG2CZZRnyJWDjYWRLzUARVf8xcPTlTS9WmWJt6eV2pG0MiBnrtFFWcW/LmRxCmLC3SB+2cVM9ty1sSaB54MpcX4Y4XBPyMPaD3/4M7UEDIuOFGxPQ9FKtGRhAjxWxzWE299nujQu0NQ/Vq5lX1nacC/B8YAJKAKQcsknOUqIz9CbiVctzL9Lnar/KWpeiSbgeNGGYMppkX5oIF+p/S+KADUjsRtQC4Xu/ZPzz14PFhEqHZoA5XFqj61HmjavS7iEhABt+vH0cf7UkCCJ3EE=
+  file: "./build/apk/Comics.apk"
+  file_glob: true
+  skip_cleanup: true
   on:
     repo: RayanMehdi/ProjetCoderProprement
+   

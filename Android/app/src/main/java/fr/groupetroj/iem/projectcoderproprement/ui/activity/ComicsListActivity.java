@@ -1,6 +1,8 @@
 package fr.groupetroj.iem.projectcoderproprement.ui.activity;
+import fr.groupetroj.iem.projectcoderproprement.ComicsApplication;
 import fr.groupetroj.iem.projectcoderproprement.data.model.Comics;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,11 +12,11 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import fr.groupetroj.iem.projectcoderproprement.R;
-import fr.groupetroj.iem.projectcoderproprement.data.model.AsyncTaskFileParsing;
+import fr.groupetroj.iem.projectcoderproprement.data.async.AsyncTaskFileParsing;
 
-public class ListComicsActivity extends AppCompatActivity {
+public class ComicsListActivity extends AppCompatActivity {
     ArrayList<Comics> listComics;
-    ListComicsAdapter listComicsAdapter;
+    ComicsListAdapter comicsListAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,15 +28,14 @@ public class ListComicsActivity extends AppCompatActivity {
         //Création de la ArrayList qui nous permettra de remplir la listView
         listComics = new ArrayList<Comics>();
 
-        listComicsAdapter = new ListComicsAdapter(listComics, this.getBaseContext());
+        comicsListAdapter = new ComicsListAdapter(listComics, this.getBaseContext());
 
         //On attribut à notre listView l'adapter que l'on vient de créer
-        listView_comics.setAdapter(listComicsAdapter);
-
+        listView_comics.setAdapter(comicsListAdapter);
 
         // TODO
 
-            new AsyncTaskFileParsing().execute(listComics, listComicsAdapter, R.raw.sample_ko, this);
+            new AsyncTaskFileParsing().execute(listComics, comicsListAdapter, R.raw.sample_ok, this);
 
 
         //Enfin on met un écouteur d'évènement sur notre listView
@@ -42,11 +43,11 @@ public class ListComicsActivity extends AppCompatActivity {
             @Override
             @SuppressWarnings("unchecked")
             public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-
-                //on récupère la HashMap contenant les infos de notre item (titre, description, img)
-                Comics map = (Comics) listView_comics.getItemAtPosition(position);
-
+                Comics currentComics = (Comics) listView_comics.getItemAtPosition(position);
                 Context context = getApplicationContext();
+                Intent intent = new Intent(ComicsListActivity.this, ComicsDetailsActivity.class);
+                ComicsApplication.application().getComicsManager().setCurrentComics(currentComics);
+                startActivity(intent);
 
             }
         });

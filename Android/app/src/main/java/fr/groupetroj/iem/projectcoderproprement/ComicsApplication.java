@@ -2,7 +2,6 @@ package fr.groupetroj.iem.projectcoderproprement;
 
 import android.app.Application;
 
-import fr.groupetroj.iem.projectcoderproprement.data.manager.ComicsCreatorsManager;
 import fr.groupetroj.iem.projectcoderproprement.data.manager.ComicsManager;
 
 /**
@@ -21,15 +20,11 @@ public class ComicsApplication extends Application{
 
     // Variable privée qui retiendra la seule instance du manager
     private ComicsManager comicsManager;
-    private ComicsCreatorsManager comicsCreatorManager;
+
 
     // getter public pour récupérer l'instance unique de l'objet manager
     public ComicsManager getComicsManager() {
         return comicsManager;
-    }
-
-    public ComicsCreatorsManager getComicsCreatorManager() {
-        return comicsCreatorManager;
     }
 
     @Override
@@ -38,7 +33,6 @@ public class ComicsApplication extends Application{
         application = this;
 
         this.comicsManager = new ComicsManager();
-        this.comicsCreatorManager = new ComicsCreatorsManager();
     }
 
 }

@@ -26,7 +26,7 @@ import java.util.Collection;
 
 public class AsyncTaskFileParsing extends AsyncTask<Object, Void, String>{
     private ArrayList<Comics> listComics;
-    private MyAdapter adapter;
+  //  private MyAdapter adapter;
     @Override
     protected String doInBackground(Object... params) {
         listComics = new ArrayList<Comics>();
@@ -34,7 +34,7 @@ public class AsyncTaskFileParsing extends AsyncTask<Object, Void, String>{
         Log.d("POST", (String) params[2]);
         String jsonRaw = this.jsonExtract((String) params[2]);
         Log.d("POST", jsonRaw);
-        adapter = (MyAdapter) params[1];
+      //  adapter = (MyAdapter) params[1];
         try {
             listComics.addAll(this.Gonsreturn(jsonRaw));
         }catch (NullPointerException e){
@@ -59,7 +59,7 @@ public class AsyncTaskFileParsing extends AsyncTask<Object, Void, String>{
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        adapter.notifyDataSetChanged();
+     //   adapter.notifyDataSetChanged();
 
     }
 

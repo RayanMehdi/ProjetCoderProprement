@@ -39,6 +39,9 @@ captures/
 .idea/gradle.xml
 .idea/dictionaries
 .idea/libraries
+Android/.idea/gradle.xml
+Android/.idea/misc.xml
+Android/.idea/runConfigurations.xml
 
 # Keystore files
 *.jks
@@ -54,6 +57,5 @@ freeline.py
 freeline/
 freeline_project_description.json
 
-/build
 
 

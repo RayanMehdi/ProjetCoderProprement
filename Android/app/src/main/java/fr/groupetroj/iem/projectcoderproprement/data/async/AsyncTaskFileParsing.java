@@ -1,10 +1,13 @@
 package fr.groupetroj.iem.projectcoderproprement.data.async;
 
+import fr.groupetroj.iem.projectcoderproprement.R;
 import fr.groupetroj.iem.projectcoderproprement.data.model.Comics;
 import fr.groupetroj.iem.projectcoderproprement.ui.activity.ComicsListAdapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -43,10 +46,8 @@ public class AsyncTaskFileParsing extends AsyncTask<Object, Void, String>{
             listComics.addAll(this.Gonsreturn(jsonRaw));
         }catch (NullPointerException e){
             Log.d("POST","Le fichier n'existe pas ou n'est pas conforme");
+            return "KO";
         }
-
-
-
         return "OK";
 
     }
@@ -66,15 +67,28 @@ public class AsyncTaskFileParsing extends AsyncTask<Object, Void, String>{
             return listComics;
 
         }catch (Exception e){
-            Log.d("Error", "Code invalide");
+            return null;
         }
-        return new ArrayList<Comics>();
+
     }
 
     @Override
-    protected void onPostExecute(String s) {
-        super.onPostExecute(s);
+    protected void onPostExecute(String response) {
+        super.onPostExecute(response);
         comicsListAdapter.notifyDataSetChanged();
+
+        if (response.equals("KO")) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setMessage(R.string.error_dialog_json_content)
+                    .setTitle(R.string.error_dialog_json_title);
+            builder.setPositiveButton(R.string.error_dialog_json_exit, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    System.exit(0);
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
 
     }
 

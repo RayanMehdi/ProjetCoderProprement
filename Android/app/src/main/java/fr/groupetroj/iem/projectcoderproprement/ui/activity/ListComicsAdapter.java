@@ -73,8 +73,8 @@ public class ListComicsAdapter extends BaseAdapter {
         textView_date.setText(listItem.get(position).getDate());
         textView_pageCount.setText(Integer.toString(listItem.get(position).getPageCount()));
 
-        //Picasso.with(context).load(listItem.get(position).getImageUrl()).into(imageView);
-        Picasso.with(context).load("http://i.annihil.us/u/prod/marvel/i/mg/f/03/59e7b08528560.jpg").into(imageView);
+        Picasso.with(context).load(listItem.get(position).getImageUrl()).into(imageView);
+
         //On retourne l'item créé.
         return constraintLayout;
     }

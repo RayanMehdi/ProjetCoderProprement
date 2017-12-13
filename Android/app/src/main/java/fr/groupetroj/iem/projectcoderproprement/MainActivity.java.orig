@@ -12,17 +12,22 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+<<<<<<< HEAD
+      //  setContentView(R.layout.activity_main);
+       // Button sharingButton = findViewById(R.id.sharing);
+=======
         setContentView(R.layout.);
 
         Button sharingButton = findViewById(R.id.sharing);
+>>>>>>> 296bbd341a522dd234369cb6bafefd0b44a097df
 
 
 
-        sharingButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                shareIt();
-            }
-        });
+        //sharingButton.setOnClickListener(new View.OnClickListener() {
+          //  public void onClick(View v) {
+          //      shareIt();
+          //  }
+       // });
 
     }
 

@@ -32,17 +32,28 @@ import java.util.Collection;
 
 public class AsyncTaskFileParsing extends AsyncTask<Object, Void, String>{
     private ArrayList<Comics> listComics;
+<<<<<<< HEAD
+  //  private MyAdapter adapter;
+=======
     private ListComicsAdapter listComicsAdapter;
     private Context context;
+>>>>>>> 296bbd341a522dd234369cb6bafefd0b44a097df
     @Override
     protected String doInBackground(Object... params) {
         listComics = new ArrayList<Comics>();
         listComics = (ArrayList<Comics>) params[0];
+<<<<<<< HEAD
+        Log.d("POST", (String) params[2]);
+        String jsonRaw = this.jsonExtract((String) params[2]);
+        Log.d("POST", jsonRaw);
+      //  adapter = (MyAdapter) params[1];
+=======
         context = (Context) params[3];
 
         String jsonRaw = this.jsonExtract((int) params[2]);
 
         listComicsAdapter = (ListComicsAdapter) params[1];
+>>>>>>> 296bbd341a522dd234369cb6bafefd0b44a097df
         try {
             listComics.addAll(this.Gonsreturn(jsonRaw));
         }catch (NullPointerException e){
@@ -78,7 +89,11 @@ public class AsyncTaskFileParsing extends AsyncTask<Object, Void, String>{
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
+<<<<<<< HEAD
+     //   adapter.notifyDataSetChanged();
+=======
         listComicsAdapter.notifyDataSetChanged();
+>>>>>>> 296bbd341a522dd234369cb6bafefd0b44a097df
 
     }
 

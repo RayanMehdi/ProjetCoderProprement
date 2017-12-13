@@ -12,7 +12,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import fr.groupetroj.iem.projectcoderproprement.R;
-import fr.groupetroj.iem.projectcoderproprement.data.model.AsyncTaskFileParsing;
+import fr.groupetroj.iem.projectcoderproprement.data.async.AsyncTaskFileParsing;
 
 public class ComicsListActivity extends AppCompatActivity {
     ArrayList<Comics> listComics;

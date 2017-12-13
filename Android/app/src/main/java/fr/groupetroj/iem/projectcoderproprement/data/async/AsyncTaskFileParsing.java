@@ -1,5 +1,6 @@
-package fr.groupetroj.iem.projectcoderproprement.data.model;
+package fr.groupetroj.iem.projectcoderproprement.data.async;
 
+import fr.groupetroj.iem.projectcoderproprement.data.model.Comics;
 import fr.groupetroj.iem.projectcoderproprement.ui.activity.ComicsListAdapter;
 
 import android.content.Context;

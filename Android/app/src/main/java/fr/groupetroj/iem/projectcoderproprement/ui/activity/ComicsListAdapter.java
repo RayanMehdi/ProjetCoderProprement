@@ -2,7 +2,6 @@ package fr.groupetroj.iem.projectcoderproprement.ui.activity;
 
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,10 +60,10 @@ public class ComicsListAdapter extends BaseAdapter {
         }
 
         //(2) : Récupération des TextView de notre layout
-        TextView textView_title = (TextView) constraintLayout.findViewById(R.id.activity_list_comics_item_title_textView);
-        TextView textView_date = (TextView) constraintLayout.findViewById(R.id.activity_list_comics_item_date_textView);
-        TextView textView_pageCount = (TextView) constraintLayout.findViewById(R.id.activity_list_comics_item_page_count_textView);
-        ImageView imageView = (ImageView) constraintLayout.findViewById(R.id.activity_list_comics_item_image);
+        TextView textView_title = (TextView) constraintLayout.findViewById(R.id.comics_list_activity_item_title_textView);
+        TextView textView_date = (TextView) constraintLayout.findViewById(R.id.comics_list_activity_item_date_textView);
+        TextView textView_pageCount = (TextView) constraintLayout.findViewById(R.id.comics_list_activity_item_page_count_textView);
+        ImageView imageView = (ImageView) constraintLayout.findViewById(R.id.comics_list_activity_item_image);
 
 
         //(3) : mise à jour des widgets des elements de l'item
@@ -80,7 +79,7 @@ public class ComicsListAdapter extends BaseAdapter {
     }
 
     public ImageView getImg(){
-        return (ImageView) constraintLayout.findViewById(R.id.activity_list_comics_item_image);
+        return (ImageView) constraintLayout.findViewById(R.id.comics_list_activity_item_image);
     }
 
 

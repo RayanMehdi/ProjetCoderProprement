@@ -12,11 +12,11 @@ android:
   - extra-android-m2repository
   
 before_script:
--   chmod 755 ./gradlew
+-   chmod 755 ./Android/gradlew
 
 script:
-- ./gradlew testDebugUnitTest
-- ./build-apk.sh
+- ./Android/gradlew testDebugUnitTest
+- ./Android/build-apk.sh
 
 notifications:
   slack: lp-iem:kDPhwslAWdRY6xk89yHqyL9i

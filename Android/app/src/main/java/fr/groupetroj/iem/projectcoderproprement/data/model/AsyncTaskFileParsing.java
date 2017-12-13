@@ -1,12 +1,10 @@
 package fr.groupetroj.iem.projectcoderproprement.data.model;
 
-import fr.groupetroj.iem.projectcoderproprement.R;
-import fr.groupetroj.iem.projectcoderproprement.ui.activity.ListComicsAdapter;
+import fr.groupetroj.iem.projectcoderproprement.ui.activity.ComicsListAdapter;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.util.MalformedJsonException;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -16,15 +14,12 @@ import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
-import java.util.Collection;
 
 /**
  * Created by iem on 17/11/2017.
@@ -32,7 +27,7 @@ import java.util.Collection;
 
 public class AsyncTaskFileParsing extends AsyncTask<Object, Void, String>{
     private ArrayList<Comics> listComics;
-    private ListComicsAdapter listComicsAdapter;
+    private ComicsListAdapter comicsListAdapter;
     private Context context;
     @Override
     protected String doInBackground(Object... params) {
@@ -42,7 +37,7 @@ public class AsyncTaskFileParsing extends AsyncTask<Object, Void, String>{
 
         String jsonRaw = this.jsonExtract((int) params[2]);
 
-        listComicsAdapter = (ListComicsAdapter) params[1];
+        comicsListAdapter = (ComicsListAdapter) params[1];
         try {
             listComics.addAll(this.Gonsreturn(jsonRaw));
         }catch (NullPointerException e){
@@ -78,7 +73,7 @@ public class AsyncTaskFileParsing extends AsyncTask<Object, Void, String>{
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        listComicsAdapter.notifyDataSetChanged();
+        comicsListAdapter.notifyDataSetChanged();
 
     }
 

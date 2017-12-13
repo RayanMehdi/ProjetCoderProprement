@@ -21,13 +21,13 @@ import fr.groupetroj.iem.projectcoderproprement.R;
  * Created by iem on 08/12/2017.
  */
 
-public class ListComicsAdapter extends BaseAdapter {
+public class ComicsListAdapter extends BaseAdapter {
 
     ArrayList<Comics> listItem= new ArrayList<Comics>();
     Context context;
     ConstraintLayout constraintLayout;
 
-    public ListComicsAdapter(ArrayList<Comics> listItem, Context context) {
+    public ComicsListAdapter(ArrayList<Comics> listItem, Context context) {
         this.listItem = listItem;
         this.context = context;
     }

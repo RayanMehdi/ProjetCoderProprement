@@ -1,4 +1,4 @@
-package fr.groupetroj.iem.projectcoderproprement;
+package fr.groupetroj.iem.projectcoderproprement.view;
 
 import android.app.Application;
 
@@ -20,7 +20,6 @@ public class ComicsApplication extends Application{
 
     // Variable privée qui retiendra la seule instance du manager
     private ComicsManager comicsManager;
-
 
     // getter public pour récupérer l'instance unique de l'objet manager
     public ComicsManager getComicsManager() {

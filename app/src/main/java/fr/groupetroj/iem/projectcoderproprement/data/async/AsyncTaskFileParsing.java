@@ -1,12 +1,14 @@
-package fr.groupetroj.iem.projectcoderproprement.data.model;
+package fr.groupetroj.iem.projectcoderproprement.data.async;
 
 import fr.groupetroj.iem.projectcoderproprement.R;
-import fr.groupetroj.iem.projectcoderproprement.ui.activity.ListComicsAdapter;
+import fr.groupetroj.iem.projectcoderproprement.data.model.Comics;
+import fr.groupetroj.iem.projectcoderproprement.ui.activity.ComicsListAdapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.util.MalformedJsonException;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -16,15 +18,12 @@ import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
-import java.util.Collection;
 
 /**
  * Created by iem on 17/11/2017.
@@ -32,7 +31,7 @@ import java.util.Collection;
 
 public class AsyncTaskFileParsing extends AsyncTask<Object, Void, String>{
     private ArrayList<Comics> listComics;
-    private ListComicsAdapter listComicsAdapter;
+    private ComicsListAdapter comicsListAdapter;
     private Context context;
     @Override
     protected String doInBackground(Object... params) {
@@ -42,15 +41,13 @@ public class AsyncTaskFileParsing extends AsyncTask<Object, Void, String>{
 
         String jsonRaw = this.jsonExtract((int) params[2]);
 
-        listComicsAdapter = (ListComicsAdapter) params[1];
+        comicsListAdapter = (ComicsListAdapter) params[1];
         try {
             listComics.addAll(this.Gonsreturn(jsonRaw));
         }catch (NullPointerException e){
             Log.d("POST","Le fichier n'existe pas ou n'est pas conforme");
+            return "KO";
         }
-
-
-
         return "OK";
 
     }
@@ -70,15 +67,28 @@ public class AsyncTaskFileParsing extends AsyncTask<Object, Void, String>{
             return listComics;
 
         }catch (Exception e){
-            Log.d("Error", "Code invalide");
+            return null;
         }
-        return new ArrayList<Comics>();
+
     }
 
     @Override
-    protected void onPostExecute(String s) {
-        super.onPostExecute(s);
-        listComicsAdapter.notifyDataSetChanged();
+    protected void onPostExecute(String response) {
+        super.onPostExecute(response);
+        comicsListAdapter.notifyDataSetChanged();
+
+        if (response.equals("KO")) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setMessage(R.string.error_dialog_json_content)
+                    .setTitle(R.string.error_dialog_json_title);
+            builder.setPositiveButton(R.string.error_dialog_json_exit, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    System.exit(0);
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
 
     }
 

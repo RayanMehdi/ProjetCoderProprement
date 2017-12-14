@@ -3,7 +3,11 @@ package fr.groupetroj.iem.projectcoderproprement.data.model;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by iem on 17/11/2017.
@@ -70,7 +74,16 @@ public class Comics implements Serializable{
     }
 
     public String getDate() {
-        return date;
+        try {
+            Date oldDate = null;
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.US);
+            oldDate = format.parse(this.date);
+            format = new SimpleDateFormat("dd/MM/yyyy",Locale.FRANCE);
+            String date_parsed = format.format(oldDate);
+            return date_parsed;
+        } catch (ParseException e) {
+            return this.date;
+        }
     }
 
     public String getImageUrl() {
@@ -80,6 +93,7 @@ public class Comics implements Serializable{
     public double getPrice() {
         return price;
     }
+
 
     public ArrayList<ComicsCreators> getCreators() {
         return creators;

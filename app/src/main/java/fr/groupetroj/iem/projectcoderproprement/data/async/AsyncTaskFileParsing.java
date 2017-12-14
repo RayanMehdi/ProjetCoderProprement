@@ -43,8 +43,9 @@ public class AsyncTaskFileParsing extends AsyncTask<Object, Void, String>{
 
         comicsListAdapter = (ComicsListAdapter) params[1];
         try {
-            listComics.addAll(this.GsonReturn(jsonRaw));
+            listComics.addAll(this.Gonsreturn(jsonRaw));
         }catch (NullPointerException e){
+            Log.d("POST","Le fichier n'existe pas ou n'est pas conforme");
             return "KO";
         }
         return "OK";
@@ -52,7 +53,7 @@ public class AsyncTaskFileParsing extends AsyncTask<Object, Void, String>{
     }
 
 
-    public ArrayList<Comics> GsonReturn(String json)
+    public ArrayList<Comics> Gonsreturn(String json)
     {
         try {
             Gson gson = new GsonBuilder().create();
@@ -100,6 +101,10 @@ public class AsyncTaskFileParsing extends AsyncTask<Object, Void, String>{
                 while ((temp = reader.readLine()) != null) {
                     textReturn += temp;
                 }
+                Log.d("POST",textReturn);
+
+
+
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e)

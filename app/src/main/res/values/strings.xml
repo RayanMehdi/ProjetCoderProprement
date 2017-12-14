@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ProjectCoderProprement</string>
+    <string name="comics_details_page_name"></string>
+    <string name="comics_list_page_name">Comics</string>
+    <string name="comics_detail_page_title">Titre</string>
+    <string name="comics_detail_page_informations">Informations</string>
+    <string name="comics_detail_page_synopsis">Synopsis</string>
+    <string name="comics_detail_page_creators">Crédits : </string>
+    <string name="error_dialog_json_title">Erreur Contenu JSON</string>
+    <string name="error_dialog_json_content">Le fichier JSON renseigné est invalide</string>
+    <string name="error_dialog_json_exit">quitter l\'application</string>
+</resources>

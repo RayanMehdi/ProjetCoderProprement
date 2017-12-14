@@ -1,12 +1,15 @@
 package fr.groupetroj.iem.projectcoderproprement.data.manager;
 
+import android.content.Context;
 import android.content.res.Resources;
 
 import java.util.ArrayList;
 
 import fr.groupetroj.iem.projectcoderproprement.R;
+import fr.groupetroj.iem.projectcoderproprement.data.async.AsyncTaskFileParsing;
 import fr.groupetroj.iem.projectcoderproprement.data.model.Comics;
 import fr.groupetroj.iem.projectcoderproprement.data.model.ComicsCreators;
+import fr.groupetroj.iem.projectcoderproprement.ui.activity.ComicsListAdapter;
 
 /**
  * Created by iem on 08/12/2017.
@@ -46,6 +49,10 @@ public class ComicsManager {
         textToReturn += currentComics.getPrice() + " , " + currentComics.getPageCount() + " - " + currentComics.getDiamondCode();
 
         return textToReturn;
+    }
+
+    public void callAsyncTask(ArrayList<Comics> listComics, ComicsListAdapter comicsListAdapter, Context context){
+        new AsyncTaskFileParsing().execute(listComics, comicsListAdapter, R.raw.sample_ok, context);
     }
 
     public ArrayList<Comics> getListComics() {

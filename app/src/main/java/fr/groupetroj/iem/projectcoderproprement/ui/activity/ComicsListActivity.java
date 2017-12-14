@@ -35,7 +35,7 @@ public class ComicsListActivity extends AppCompatActivity {
 
         // CHANGER LE FICHIER JSON ICI R.raw.sample_ok : le bon JSON, R.raw.sample_ko : le mauvais JSON
 
-        new AsyncTaskFileParsing().execute(listComics, comicsListAdapter, R.raw.sample_ko, this);
+        new AsyncTaskFileParsing().execute(listComics, comicsListAdapter, R.raw.sample_ok, this);
 
 
         //Enfin on met un écouteur d'évènement sur notre listView

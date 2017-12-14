@@ -30,6 +30,7 @@ public class ComicsDetailsActivity extends AppCompatActivity implements ComicsDe
 
         initViews();
         initializeInjection();
+        comicsDetailsPresenter.updateView();
 
     }
 

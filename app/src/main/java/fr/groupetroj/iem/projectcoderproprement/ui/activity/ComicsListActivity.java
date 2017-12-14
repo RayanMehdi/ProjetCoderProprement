@@ -24,37 +24,29 @@ public class ComicsListActivity extends AppCompatActivity implements ComicsListV
         setContentView(R.layout.activity_list_comics);
         initviews();
         initializeInjection();
+        comicsListPresenter.updateView();
     }
 
     public void initviews(){
         listView_comics = (ListView) findViewById(R.id.listView);
+    }
 
-        //Création de la ArrayList qui nous permettra de remplir la listView
-        listComics = new ArrayList<Comics>();
+    private void initializeInjection(){
+        this.comicsListPresenter = new ComicsListPresenter(ComicsApplication.application().getComicsManager(), this, this);
+    }
 
-        comicsListAdapter = new ComicsListAdapter(listComics, this.getBaseContext());
+    @Override
+    public void update(ComicsListAdapter comicsListAdapter) {
+
+        listView_comics.setAdapter(comicsListAdapter);
 
         //Enfin on met un écouteur d'évènement sur notre listView
         listView_comics.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             @SuppressWarnings("unchecked")
             public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-                Comics currentComics = (Comics) listView_comics.getItemAtPosition(position);
-                Intent intent = new Intent(ComicsListActivity.this, ComicsDetailsActivity.class);
-                ComicsApplication.application().getComicsManager().setCurrentComics(currentComics);
-                startActivity(intent);
+                comicsListPresenter.goToDetailActivity(listView_comics, position);
             }
         });
-
-        listView_comics.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                return true;
-            }
-        });
-    }
-
-    private void initializeInjection(){
-        this.comicsListPresenter = new ComicsListPresenter(ComicsApplication.application().getComicsManager(), this, this);
     }
 }
